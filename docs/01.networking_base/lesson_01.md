@@ -28,6 +28,8 @@
 
 - Maximum Value (255): This occurs when all 8 bits are set to 1 (\(11111111\_{2}\)). To find the total value, you must sum the weights of every bit position:\(128+64+32+16+8+4+2+1=255\)
 
+![alt text](images/ip_range.png)
+
 ### Mathematical Formula
 
 - A simpler way to calculate the maximum value for any number of bits (\(n\)) is using the formula \(2^{n}-1\). Since an octet has 8 bits:
