@@ -136,6 +136,9 @@ ping 172.24.1.10
 
 📸 **Expected Result:**
 
+![alt text](images/ping_output.PNG)
+
+
 * Replies such as `Reply from 172.24.x.x` indicate success
 * Low latency (<1 ms) confirms proper configuration
 
