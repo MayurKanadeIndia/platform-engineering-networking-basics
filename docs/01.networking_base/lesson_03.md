@@ -1,112 +1,160 @@
-# How to configure Networking?
+# 🌐 How to Configure Basic Networking (Windows)
 
-#### If we want to put any machine into the network then following 4 things must be carried out.
-
-#### In Windows System
-
-- IP Address
-- Subnet Mask
-- Name of the machine
-- Workgroup (A network in which, group of machines are resided.)
-
-#### In a workgroup:
-
-- All computers are peers; no computer has control over another computer.
-- Each computer has a set of user accounts. To log on to any computer in the workgroup, you must have an account on that computer.
-- There are typically no more than twenty computers.
-- A workgroup is not protected by a password.
-- All computers must be on the same local network or subnet.
+Configuring a network allows multiple computers to **communicate and share resources** such as files, printers, and internet access. This guide explains the fundamentals and provides a **step-by-step walkthrough** using two Windows machines.
 
 ---
 
-# Configuring Two Windows Machines in the Same Workgroup and Network
+## ✅ Core Requirements to Connect a Machine to a Network
 
-- In this article, we'll walk through the process of setting up two Windows machines (let's call them Machine A and Machine B) to communicate over a local network using static IP addresses within the same subnet. This setup is ideal for small home or office environments where you want to share files, printers, or other resources without relying on a DHCP server. We'll use the following IP configurations:
+To place any computer on a network, the following **four elements** must be properly configured:
 
-- Machine A: IP Address = 172.24.1.10, Subnet Mask = 255.255.0.0
-- Machine B: IP Address = 172.24.2.20, Subnet Mask = 255.255.0.0
-
-- These addresses fall within the private IPv4 range (172.16.0.0 to 172.31.255.255), specifically in the 172.24.0.0/16 subnet, allowing direct communication without a router or gateway for basic testing. We'll also configure both machines to join the same workgroup (named "HOMENETWORK" for this example) to enable resource sharing. Finally, we'll test connectivity using the Ping command.
-- This guide assumes you're using Windows 10 or 11 (the process is similar across recent versions), and the machines are physically connected via Ethernet cables (e.g., directly with a crossover cable or through a switch/hub). Ensure both machines are powered on and connected to the network before starting. Administrative privileges are required for these changes.
-
-### Step 1: Configuring the IP Address and Subnet Mask on Each Machine
-
-- Static IP configuration ensures reliable addressing. We'll disable IPv6 for simplicity (as it's not needed here) and focus on IPv4.
-  On Machine A (IP: 172.24.1.10):
-
-- Right-click the Start button (Windows icon) and select Settings (gear icon). Alternatively, press Windows key + I to open Settings directly.
-- In Settings, navigate to Network & Internet.
-- Click on Ethernet (or Wi-Fi if using wireless, though Ethernet is recommended for stability).
-- Under the active connection (e.g., "Ethernet"), click Properties.
-- In the Properties window, scroll down to the "IP settings" section and click Edit next to "IP assignment" (it might say "Automatic (DHCP)" by default).
-- Change the dropdown from "Automatic (DHCP)" to Manual.
-- Toggle on IPv4 (ensure IPv6 is toggled off if you want to simplify).
-- Enter the following details:
-  IP address: 172.24.1.10
-  Subnet mask: 255.255.0.0 (this will auto-populate as "16" for subnet prefix length).
-  Gateway: Leave blank (no default gateway needed for local subnet communication).
-  Preferred DNS server: Leave blank or set to 8.8.8.8 (Google DNS) if internet access is desired later.
-  Alternate DNS server: Leave blank or set to 8.8.4.4.
-
-- Click Save to apply the changes. Windows may briefly disconnect and reconnect the network.
-
-- To verify, open Command Prompt (search for "cmd" in the Start menu) and type ipconfig. Look under "Ethernet adapter Ethernet" (or similar) for "IPv4 Address" to confirm it's set to 172.24.1.10 with subnet mask 255.255.0.0.
+* 🧮 **IP Address** – A unique identifier for the machine on the network
+* 🎭 **Subnet Mask** – Defines the network boundary
+* 💻 **Computer (Host) Name** – Identifies the machine
+* 🧑‍🤝‍🧑 **Workgroup Name** – Logical grouping of computers on the same network
 
 ---
 
-### On Machine B (IP: 172.24.2.20):
+## 🏘️ Understanding a Workgroup
 
-Follow the exact same steps as above, but use these details in Step 8:
+A **workgroup** is a simple peer-to-peer network model commonly used in homes or small offices.
 
-- IP address: 172.24.2.20
-- Subnet mask: 255.255.0.0
-- Gateway and DNS: Leave blank or configure as needed.
+**Key Characteristics:**
 
-- After configuration, both machines should now be on the same logical network, allowing packet exchange.
-
-##### Step 2: Setting the Workgroup Name on Each Machine
-
-#### Workgroups allow Windows machines to discover each other for file sharing. By default, Windows uses "WORKGROUP," but we'll change it to "HOMENETWORK" for both to ensure they're in the same group.
-
-### On Machine A:
-
-- Right-click the Start button and select System.
-- In the System window, click About on the left sidebar, then scroll down and click Advanced system settings (under "Related settings").
-- In the System Properties window, switch to the Computer Name tab.
-- Click the Change button next to "To rename this computer or change its domain or workgroup."
-- In the Computer Name/Domain Changes window, under "Member of," select Workgroup (if not already selected).
-- Enter HOMENETWORK in the Workgroup field (case-insensitive, but use all caps for consistency).
-  Click OK. You'll see a welcome message for the new workgroup.
-- Restart the machine when prompted (click OK and then Restart Now).
-
-### On Machine B:
-
-- Repeat the exact same steps, entering HOMENETWORK as the workgroup name, and restart.
-- After rebooting both machines, they should now be visible to each other in Network Explorer (open File Explorer > Network). If not, ensure Windows Firewall allows File and Printer Sharing (go to Settings > Network & Internet > Ethernet > Properties > IPv4 > Advanced > WINS tab, but usually not needed for basic ping).
+* 🤝 All computers are **peers** (no central authority)
+* 👤 Each computer maintains its **own user accounts**
+* 🔢 Typically supports **up to ~20 computers**
+* 🔓 No centralized password protection
+* 🌐 All computers must be on the **same local network/subnet**
 
 ---
 
-### Step 3: Testing Connectivity with the Ping Command
+## 🧩 Network Scenario Overview
 
-- Ping uses ICMP echo requests to verify if one machine can reach the other, confirming network configuration.
+We will configure **two Windows machines** (Machine A and Machine B) to communicate within the same network using **static IP addressing**.
 
-##### On Machine A (Testing Reachability to Machine B):
+### 🖥️ Network Details
 
-- Open Command Prompt (search "cmd" in Start menu).
-  Type the following command and press Enter:
-  ping 172.24.2.20
-- Observe the output. A successful ping looks like this:
-  ![alt text](images/ping_output.PNG)
+| Machine | IP Address  | Subnet Mask | Workgroup   |
+| ------- | ----------- | ----------- | ----------- |
+| A       | 172.24.1.10 | 255.255.0.0 | HOMENETWORK |
+| B       | 172.24.2.20 | 255.255.0.0 | HOMENETWORK |
 
-- If you see "Reply from..." with low latency (e.g., <1ms), the connection is successful.
-- If you get "Request timed out" or "Destination host unreachable," check cables, firewall (temporarily disable via Settings > Update & Security > Windows Security > Firewall & network protection), or re-verify IP settings.
+These IPs belong to the **private IPv4 range (172.16.0.0 – 172.31.255.255)** and fall within the same **/16 subnet**, allowing direct communication.
 
-### On Machine B (Testing Reachability to Machine A):
+---
 
-- Open Command Prompt.
-- Type: ping 172.24.1.10
-- Check for successful replies as above.
+## 🧭 Network Diagram (Logical View)
 
-#### If both pings succeed bidirectionally, your setup is complete. You can now proceed to share folders (right-click a folder > Properties > Sharing tab) or use other network features.
+```
+        ┌──────────────┐        ┌──────────────┐
+        │  Machine A   │        │  Machine B   │
+        │ 172.24.1.10  │◀──────▶│ 172.24.2.20  │
+        │ /16 Subnet   │        │ /16 Subnet   │
+        └──────────────┘        └──────────────┘
+                 Same Network: 172.24.0.0/16
+```
 
-#### Note: The main purpose to have two or more computers within a same network is to share the resources and nothing else.
+---
+
+## 🛠️ Step 1: Configure IP Address and Subnet Mask
+
+Static IP addressing ensures predictable communication between machines.
+
+### 🔹 Machine A Configuration
+
+1. ⚙️ Open **Settings** → **Network & Internet**
+2. 🔌 Select **Ethernet** (or Wi‑Fi if applicable)
+3. 📄 Click **Properties** → **Edit IP Assignment**
+4. 🔄 Change from **Automatic (DHCP)** to **Manual**
+5. ✅ Enable **IPv4** (disable IPv6 for simplicity)
+6. ✏️ Enter:
+
+   * IP Address: `172.24.1.10`
+   * Subnet Mask: `255.255.0.0` (Prefix: 16)
+   * Gateway: *(Leave blank)*
+   * DNS: *(Optional – e.g., 8.8.8.8)*
+7. 💾 Click **Save**
+
+🔍 **Verification:**
+
+* Open Command Prompt and run:
+
+  ```
+  ipconfig
+  ```
+* Confirm the IPv4 address and subnet mask.
+
+---
+
+### 🔹 Machine B Configuration
+
+Repeat the same steps using:
+
+* IP Address: `172.24.2.20`
+* Subnet Mask: `255.255.0.0`
+
+✅ At this point, both machines are on the same logical network.
+
+---
+
+## 🧑‍🤝‍🧑 Step 2: Configure the Workgroup Name
+
+Workgroups enable **network discovery and resource sharing**.
+
+### 🔹 Steps (Perform on Both Machines)
+
+1. 🖱️ Right‑click **Start** → **System**
+2. ℹ️ Open **About** → **Advanced system settings**
+3. 🏷️ Go to **Computer Name** tab → **Change**
+4. 🧑‍🤝‍🧑 Select **Workgroup** and enter:
+
+   ```
+   HOMENETWORK
+   ```
+5. 🔁 Restart the system when prompted
+
+📂 After reboot, machines should appear in **File Explorer → Network**.
+
+---
+
+## 📡 Step 3: Test Connectivity Using Ping
+
+The `ping` command verifies whether machines can reach each other.
+
+### 🔹 From Machine A → Machine B
+
+```
+ping 172.24.2.20
+```
+
+### 🔹 From Machine B → Machine A
+
+```
+ping 172.24.1.10
+```
+
+📸 **Expected Result:**
+
+* Replies such as `Reply from 172.24.x.x` indicate success
+* Low latency (<1 ms) confirms proper configuration
+
+❌ If ping fails:
+
+* 🔥 Check Windows Firewall
+* 🔌 Verify cables or switch
+* 🔁 Reconfirm IP settings
+
+---
+
+## 🎯 Final Outcome
+
+✔ Both machines can now communicate
+✔ Resource sharing (files/printers) is enabled
+✔ Ideal setup for **home labs, classrooms, and small offices**
+
+> 🔑 **Key Purpose of Networking:** Resource sharing and communication — nothing more, nothing less.
+
+---
+
+✨ You now have a clean, structured, and beginner‑friendly networking setup guide.
