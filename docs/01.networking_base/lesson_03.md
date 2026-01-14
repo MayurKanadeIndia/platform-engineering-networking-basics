@@ -8,10 +8,10 @@ Configuring a network allows multiple computers to **communicate and share resou
 
 To place any computer on a network, the following **four elements** must be properly configured:
 
-* 🧮 **IP Address** – A unique identifier for the machine on the network
-* 🎭 **Subnet Mask** – Defines the network boundary
-* 💻 **Computer (Host) Name** – Identifies the machine
-* 🧑‍🤝‍🧑 **Workgroup Name** – Logical grouping of computers on the same network
+- 🧮 **IP Address** – A unique identifier for the machine on the network
+- 🎭 **Subnet Mask** – Defines the network boundary
+- 💻 **Computer (Host) Name** – Identifies the machine
+- 🧑‍🤝‍🧑 **Workgroup Name** – Logical grouping of computers on the same network
 
 ---
 
@@ -21,11 +21,11 @@ A **workgroup** is a simple peer-to-peer network model commonly used in homes or
 
 **Key Characteristics:**
 
-* 🤝 All computers are **peers** (no central authority)
-* 👤 Each computer maintains its **own user accounts**
-* 🔢 Typically supports **up to ~20 computers**
-* 🔓 No centralized password protection
-* 🌐 All computers must be on the **same local network/subnet**
+- 🤝 All computers are **peers** (no central authority)
+- 👤 Each computer maintains its **own user accounts**
+- 🔢 Typically supports **up to ~20 computers**
+- 🔓 No centralized password protection
+- 🌐 All computers must be on the **same local network/subnet**
 
 ---
 
@@ -70,20 +70,22 @@ Static IP addressing ensures predictable communication between machines.
 5. ✅ Enable **IPv4** (disable IPv6 for simplicity)
 6. ✏️ Enter:
 
-   * IP Address: `172.24.1.10`
-   * Subnet Mask: `255.255.0.0` (Prefix: 16)
-   * Gateway: *(Leave blank)*
-   * DNS: *(Optional – e.g., 8.8.8.8)*
+   - IP Address: `172.24.1.10`
+   - Subnet Mask: `255.255.0.0` (Prefix: 16)
+   - Gateway: _(Leave blank)_
+   - DNS: _(Optional – e.g., 8.8.8.8)_
+
 7. 💾 Click **Save**
 
 🔍 **Verification:**
 
-* Open Command Prompt and run:
+- Open Command Prompt and run:
 
   ```
   ipconfig
   ```
-* Confirm the IPv4 address and subnet mask.
+
+- Confirm the IPv4 address and subnet mask.
 
 ---
 
@@ -91,8 +93,8 @@ Static IP addressing ensures predictable communication between machines.
 
 Repeat the same steps using:
 
-* IP Address: `172.24.2.20`
-* Subnet Mask: `255.255.0.0`
+- IP Address: `172.24.2.20`
+- Subnet Mask: `255.255.0.0`
 
 ✅ At this point, both machines are on the same logical network.
 
@@ -112,6 +114,7 @@ Workgroups enable **network discovery and resource sharing**.
    ```
    HOMENETWORK
    ```
+
 5. 🔁 Restart the system when prompted
 
 📂 After reboot, machines should appear in **File Explorer → Network**.
@@ -138,15 +141,14 @@ ping 172.24.1.10
 
 ![alt text](images/ping_output.PNG)
 
-
-* Replies such as `Reply from 172.24.x.x` indicate success
-* Low latency (<1 ms) confirms proper configuration
+- Replies such as `Reply from 172.24.x.x` indicate success
+- Low latency (<1 ms) confirms proper configuration
 
 ❌ If ping fails:
 
-* 🔥 Check Windows Firewall
-* 🔌 Verify cables or switch
-* 🔁 Reconfirm IP settings
+- 🔥 Check Windows Firewall
+- 🔌 Verify cables or switch
+- 🔁 Reconfirm IP settings
 
 ---
 
@@ -161,3 +163,5 @@ ping 172.24.1.10
 ---
 
 ✨ You now have a clean, structured, and beginner‑friendly networking setup guide.
+
+---
