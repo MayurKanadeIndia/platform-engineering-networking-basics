@@ -44,6 +44,31 @@ These IPs belong to the **private IPv4 range (172.16.0.0 – 172.31.255.255)** a
 
 ---
 
+### Quick Scenario Check
+
+#### We've Two Machines:
+
+- First Machine (172.24.1.10)
+- Second Machine (172.25.2.20)
+
+They both have a same subnet mask as 255.255.0.0
+then they belong to the same network or different network?
+
+- Network ID: 172.24.0.0 of the first machine
+- Network ID: 172.25.0.0 of the second machine
+
+#### Because the second octets are different (24 vs 25), the Network IDs do not match.
+
+#### Implications:
+
+#### Communication: These machines cannot communicate directly with each other on a local network.
+
+#### To Put Them on the Same Network:
+
+- You would need to change the first two octets of one machine so they match (e.g., both starting with 172.24.x.x) or change the subnet mask to 255.0.0.0 to broaden the network to include both
+
+---
+
 ## 🧭 Network Diagram (Logical View)
 
 ```
