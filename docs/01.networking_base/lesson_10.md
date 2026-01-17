@@ -11,6 +11,10 @@
 
 ---
 
+![alt text](images/main_gateway_router.PNG)
+
+---
+
 #### 🧠 What Is a Router / Gateway?
 
 #### A Router (also called Gateway) is a device that:
