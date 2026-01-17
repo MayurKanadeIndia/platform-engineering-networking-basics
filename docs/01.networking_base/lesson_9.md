@@ -124,9 +124,9 @@ It understands:
 
 #### 📊 Intelligent Forwarding Flow :
 
-#### PC1 → SWITCH → PC2 ✅
+#### PC1 → SWITCH → PC4 ✅
 
-#### ❌ PC3 & PC4 are NOT disturbed
+#### ❌ PC2 & PC3 are NOT disturbed
 
 #### ✅ Faster, cleaner network
 
