@@ -43,3 +43,59 @@
 #### The user Vipin can not make SSH connection to user aanya on client "c2", however, from the same firewall machine, user aanantika making SSH connection towards aanya on "c2". Here our scenario is successful.
 
 #### Note: in this case user VIPIN can easily PING to any other machines in the network because PING or respective rule policies does not include any user related information.
+
+---
+
+### Task-2: The firewall machine should not make a PING request to any other client machine in any network.
+
+#### when we're using PING, we are sending "echo-request" (type-8) type of "ICMP" packets and in return we are getting "echo-reply" (type-0) "ICMP" packets.
+
+![alt text](images/output-direction-firewall-ping-example-1.PNG)
+
+#### block "echo-request" ICMP packets originating from "firewall" and going towards "192.168.0.2", now firewall not able to ping "c2" but "c2" will be able to ping "firewall"
+
+![alt text](images/output-fw-to-c2.PNG)
+
+---
+
+#### however, from client "c2" to firewall, PING is successful.
+
+![alt text](images/output-ping-from-c2-to-firewall.PNG)
+
+---
+
+#### To delete the rule, we use following command
+
+![alt text](images/output-delete-rule-example-1.PNG)
+
+#### Delete rule check.
+
+![alt text](images/output-delete-rule-check.PNG)
+
+---
+
+#### We will cover the task-3 as just by observing the rules: here, in this case we only have rules and explanation and not any in depth images, just observing the rules and their flow explanation.
+
+### 1. how to block web-access (http)
+
+- iptables -t filter -A output -p tcp -d 172.24.0.11 --dport 80 -j DROP
+
+(block web-access from "firewall" on "172.24.0.11", now firewall will not be able to access the web-server on client11,
+however, the request from client 11 and client 31 will be able to access the firewall, web-access.
+)
+
+### 2. how to block from all source ports to firewall
+
+- iptables -t fileter -A OUTPUT -p tcp --sport 80 -j DROP
+
+- source port 80 has been blocked by the above command.
+- Firewall to client11 (traffic has no problem and successful)
+- From client 11,31 and c2 to firewall (traffic will not flow)
+
+### 3. how to block web-access from a particular or specific ip
+
+- ### iptables -t filter -A OUTPUT -p tcp -d 172.24.0.11 --sport 80 -j DROP
+
+- From firewall to client 11, web-access (http) is possible.
+- From client 11 to firewall, web-access (http) is not possible or denied
+- From client 31 to firewall , web-access (http) is possible.
