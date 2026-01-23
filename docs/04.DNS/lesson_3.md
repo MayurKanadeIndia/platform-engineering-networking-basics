@@ -45,3 +45,47 @@
 #### Step-10: Verification from Slave to Master Connectivity.
 
 ![alt text](images/slave-step-10.PNG)
+
+---
+
+---
+
+#### Verification through CLI for DNS-Slave server setup
+
+#### 1. Hostname
+
+## ![alt text](images/slave-dns-verification-1.PNG)
+
+---
+
+#### 2. resolv.conf
+
+## ![alt text](images/slave-dns-verification-2.PNG)
+
+---
+
+#### 3. STATIC IP changes
+
+## ![alt text](images/slave-dns-verification-3.PNG)
+
+---
+
+#### 4. SELINUX Disabled
+
+## ![alt text](images/slave-dns-verification-4.PNG)
+
+---
+
+#### 4. Firewall Policy Disabled and some packge check
+
+## ![alt text](images/slave-dns-verification-5.PNG)
+
+---
+
+#### 5. Package Installation Check-2
+
+## ![alt text](images/slave-dns-verification-6.PNG)
+
+#### 6. PING Check (slave to master)
+
+## ![alt text](images/slave-dns-verification-7.PNG)
