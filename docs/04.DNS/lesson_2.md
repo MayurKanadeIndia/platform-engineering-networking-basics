@@ -61,3 +61,33 @@
 ![alt text](images/nat-to-bridge.PNG)
 
 ---
+
+#### All Verifications By CLI (Command Line Interface) on DNS_Master
+
+#### 1. Hostname
+
+## ![alt text](images/master-dns-verification.PNG)
+
+#### 2. SEStatus
+
+## ![alt text](images/master-dns-verification_2.PNG)
+
+#### 3. IfcfgEns file
+
+## ![alt text](images/master-dns-verification_3.PNG)
+
+#### 4. NAT bridging setting
+
+## ![alt text](images/master-dns-verification_4.PNG)
+
+#### 5. All package installation check.
+
+## ![alt text](images/master-dns-verification_5.PNG)
+
+#### 6. SELinux file configuration check
+
+## ![alt text](images/master-dns-verification_6.PNG)
+
+#### 7. httpd and ftp download package check
+
+## ![alt text](images/master-dns-verification_7.PNG)
