@@ -48,3 +48,33 @@
 ![alt text](images/client-dns-step11.PNG)
 
 ---
+
+#### DNS-Client Machine Verification through CLI
+
+#### 1. Hostname
+
+## ![alt text](images/dns-client-verification1.PNG)
+
+---
+
+#### 2. ifcfg ens33 file
+
+## ![alt text](images/dns-client-verification2.PNG)
+
+---
+
+#### 3. SELinux Status
+
+## ![alt text](images/dns-client-verification3.PNG)
+
+---
+
+#### 4. All Packages Installation check
+
+## ![alt text](images/dns-client-verification4.PNG)
+
+---
+
+#### 5. PING to Master DNS check
+
+## ![alt text](images/dns-client-verification5.PNG)
